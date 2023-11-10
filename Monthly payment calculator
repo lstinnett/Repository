@@ -1,0 +1,35 @@
+#Laine Stinnett Monthly Payment Calculator
+#CS 135 11/5/23
+
+def calculate_monthly_payment(principal, annual_interest_rate, years):
+# Convert annual interest rate to monthly rate
+r = (annual_interest_rate / 12) / 100
+
+# Convert years to months
+n = years * 12
+
+# Calculate monthly payment using the provided formula
+monthly_payment = principal * ((r*(1+r)**n)/(((1+r)**n)-1))
+
+return round(monthly_payment, 2)
+
+# Initialize loans processed counter
+loans_processed = 0
+
+print("Monthly Payment Calculator")
+
+while True:
+principal = float(input("\nHow much is the loan? "))
+annual_interest_rate = float(input("Annual interest rate (i.e., 6.5)? "))
+years = int(input("How many years? "))
+
+monthly_payment = calculate_monthly_payment(principal, annual_interest_rate, years)
+print(f"Payment is ${monthly_payment:.2f}")
+
+another_loan = input("\nGo again (Y/N)? ")
+if another_loan.lower() != 'y':
+break
+
+loans_processed += 1
+
+print(f"\nLoans processed today: {loans_processed + 1}")
