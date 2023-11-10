@@ -1,0 +1,32 @@
+#Laine Stinnett 11/5/23 Bulk Book Program
+
+
+def calculate_total_price(unit_price, quantity):
+    bulk_price = unit_price * quantity
+    sales_tax = 0.095 * bulk_price
+    shipping_charge = 3 * quantity
+    total_price = bulk_price + sales_tax + shipping_charge
+    return bulk_price, sales_tax, shipping_charge, total_price
+
+orders = []
+
+while True:
+    unit_price = float(input("What is the price of the book? $"))
+    quantity = int(input("How many books will be ordered? "))
+
+    bulk_price, sales_tax, shipping_charge, total_price = calculate_total_price(unit_price, quantity)
+
+    orders.append((bulk_price, sales_tax, shipping_charge, total_price))
+
+    print("\nOrder Summary:")
+    print(f"\nBulk Price: ${bulk_price:.2f}")
+    print(f"Sales Tax (9.5%): ${sales_tax:.2f}")
+    print(f"Shipping Charge: ${shipping_charge:.2f}")
+    print(f"Total Price: ${total_price:.2f}")
+
+    another_order = input("Would you like to place another order? (y/n): ")
+    if another_order.lower() != 'y':
+        break
+
+print("\nThank you for shopping with us! Have a great day!")
+
